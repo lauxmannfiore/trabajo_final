@@ -16,7 +16,9 @@
 <meta property="og:image" content="https://TU_USUARIO.github.io/mate-barranca/images/hero.jpg">
 <meta name="theme-color" content="#1F3D2B">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧉%3C/text%3E%3C/svg%3E">
-
+<script src="https://cdn.fromdoppler.com/formgenerator/latest/vendor.js?64900762"></script>
+<link rel="stylesheet" href="https://cdn.fromdoppler.com/formgenerator/latest/styles.css?64900762" />
+  
 <style>
 :root{--verde:#1F3D2B;--hoja:#8DB63C;--papel:#F7F9F2;--tierra:#4A3322;--texto:#1c2420;--gris:#5b655f;--borde:#d9dfd2}
 *{box-sizing:border-box}
@@ -157,39 +159,29 @@ footer.pie a{color:#fff}
 </section>
 
 <!-- ============================================================
+     <!-- ============================================================
      AIDA - 4. ACCIÓN
-     Es la conversión que busca la campaña: que la persona se
-     suscriba y reciba su 15% de descuento.
-     Incluye: formulario (CTA principal), aviso de uso de datos
-     (Ley 25.326) y enlace a los términos y condiciones.
+     Conversión de la campaña: suscripción con doble opt-in
+     mediante el formulario incrustado de Doppler.
+     Incluye aviso de uso de datos (Ley 25.326) y enlace a T&C.
      ============================================================ -->
 <section class="accion" id="quiero">
   <div class="wrap">
     <div>
       <h2>Hacete parte y obtené 15% off</h2>
-      <p>Completá tus datos y recibí tu descuento y novedades en tu email.</p>
+      <p>Completá tus datos y recibí tu descuento y novedades en tu email. Vas a recibir un mail para confirmar tu suscripción.</p>
     </div>
 
-    <!-- IMPORTANTE: reemplazá el action por la dirección del formulario que te da la plataforma de email (Doppler).
-         Los name de los campos tienen que coincidir con los de ese formulario. -->
-    <form action="URL_DEL_FORMULARIO_DE_TU_PLATAFORMA" method="post">
-      <label for="nombre">Nombre</label>
-      <input type="text" id="nombre" name="FNAME" autocomplete="given-name" required>
-      <label for="apellido">Apellido</label>
-      <input type="text" id="apellido" name="LNAME" autocomplete="family-name" required>
-      <label for="email">Email</label>
-      <input type="email" id="email" name="EMAIL" autocomplete="email" required>
-      <div class="check">
-        <input type="checkbox" id="acepto" name="acepto" required>
-        <label for="acepto">Acepto recibir comunicaciones de Yerba Mate Barranca y los <a href="#tyc">términos y condiciones</a>.</label>
-      </div>
-      <button class="btn btn-block" type="submit">Quiero el descuento</button>
-      <p class="legal">Datos personales: tu nombre y email serán usados solo para enviarte este descuento e información de Yerba Mate Barranca. Quedan incluidos en una base de datos de nuestra responsabilidad. Podés acceder, rectificar o suprimir tus datos escribiendo a yerbamate@barranca.com, conforme a la Ley 25.326. La AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, órgano de control de dicha ley, atiende denuncias y reclamos.</p>
-    </form>
+    <div class="caja-form">
+      <!-- Formulario de Doppler (doble opt-in) -->
+      <div data-dp-form="PuswgnBl8h9taRKHNerqwA%3d%3d"></div>
+
+      <p class="legal">Al suscribirte aceptás los <a href="#tyc">términos y condiciones</a>. Datos personales: tu nombre y email serán usados solo para enviarte este descuento e información de Yerba Mate Barranca. Quedan incluidos en una base de datos de nuestra responsabilidad. Podés acceder, rectificar o suprimir tus datos escribiendo a yerbamate@barranca.com, conforme a la Ley 25.326. La AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, órgano de control de dicha ley, atiende denuncias y reclamos.</p>
+    </div>
   </div>
 </section>
 
-<!-- ===== CTA de "red de seguridad": para quien todavía no quiere dejar su mail ===== -->
+<!-- ===== CTA de "red de seguridad"===== -->
 <div class="seguridad">
   <div class="wrap">
     <p>¿Todavía tenés dudas? <a href="https://wa.me/549XXXXXXXXXX">Escribinos por WhatsApp</a> y te ayudamos a elegir.</p>
