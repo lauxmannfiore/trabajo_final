@@ -15,6 +15,9 @@
 <meta property="og:type" content="website">
 <!-- La imagen se indica con la dirección de la página publicada (github.io), no con la de github.com -->
 <meta property="og:image" content="https://lauxmannfiore.github.io/trabajo_final/images/pexels-egorkomarov.jpg">
+<link rel="canonical" href="https://lauxmannfiore.github.io/trabajo_final/">
+<!-- Rendimiento: la foto principal se descarga cuanto antes (mejora el LCP) -->
+<link rel="preload" as="image" href="images/pexels-egorkomarov.jpg" fetchpriority="high">
 <meta name="theme-color" content="#1F3D2B">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧉%3C/text%3E%3C/svg%3E">
 
@@ -56,6 +59,7 @@ blockquote footer{margin-top:8px;font:.9rem system-ui,sans-serif;color:var(--gri
 .accion h2{color:#fff}
 .accion .wrap{display:grid;gap:36px;grid-template-columns:1fr 1fr;align-items:start}
 .formcard{background:#fff;color:var(--texto);padding:24px;border-radius:10px}
+.formcard ._dp_container-form{min-height:360px}
 .legal{font:.82rem/1.5 system-ui,sans-serif;color:var(--gris);margin:12px 0 0}
 .seguridad{text-align:center;padding:40px 0}
 .seguridad a{font:700 1rem system-ui,sans-serif}
@@ -74,9 +78,6 @@ footer.pie a{color:#fff}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
-<!-- Formulario de Doppler: estilos y script que dibujan el formulario dentro de la landing -->
-<link rel="stylesheet" href="https://cdn.fromdoppler.com/formgenerator/latest/styles.css">
-<script src="https://cdn.fromdoppler.com/formgenerator/latest/vendor.js"></script>
 </head>
 
 <body>
@@ -84,7 +85,7 @@ footer.pie a{color:#fff}
 <!-- ===================== CABECERA (logo) ===================== -->
 <header>
   <div class="wrap">
-    <a class="logo" href="#">🧉 Yerba Mate Barranca</a>
+    <a class="logo" href="#"><span aria-hidden="true">🧉</span> Yerba Mate Barranca</a>
     <a class="btn-mini" href="#quiero">Quiero mi yerba</a>
   </div>
 </header>
@@ -105,7 +106,7 @@ footer.pie a{color:#fff}
       <a class="btn" href="#quiero">Quiero mi 15% de descuento</a>
     </div>
     <figure>
-      <img src="images/pexels-egorkomarov.jpg" width="800" height="600" alt="Paquete de yerba canchada junto a un mate con bombilla" fetchpriority="high">
+      <img src="images/pexels-egorkomarov.jpg" width="800" height="600" alt="Paquete de yerba canchada junto a un mate con bombilla" fetchpriority="high" decoding="async">
       <figcaption>Foto: Egor Komarov, Pexels</figcaption>
     </figure>
   </div>
@@ -163,16 +164,48 @@ footer.pie a{color:#fff}
      ============================================================ -->
 <section class="accion" id="quiero">
   <div class="wrap">
-  <div>
-
+    <div>
+      <h2>Hacete parte y obtené 15% off</h2>
+      <p>Completá tus datos y recibí tu descuento y novedades en tu email.</p>
+    </div>
 
     <!-- Formulario de Doppler incrustado: los campos y el envío los maneja Doppler (los datos entran directo a la lista) -->
     <div class="formcard">
       <div class="_dp_container-form" id="56460400"></div>
+<noscript>
+        <p>Para suscribirte, completá el formulario en <a href="https://www.dopplerpages.com/fiorelauxmannmkt-DA7B9/Form1-91235">esta página</a>.</p>
+      </noscript>
       <script>
-        $jqf().ready(function() {
-          renderForm("PuswgnBl8h9taRKHNerqwA%3D%3D", "56460400");
-        });
+        /* Rendimiento: los estilos y el script de Doppler se descargan solo cuando la persona se acerca al formulario.
+           Así no bloquean la carga inicial de la página. */
+        (function () {
+          var cargado = false;
+          function cargarDoppler() {
+            if (cargado) return;
+            cargado = true;
+            var css = document.createElement("link");
+            css.rel = "stylesheet";
+            css.href = "https://cdn.fromdoppler.com/formgenerator/latest/styles.css";
+            document.head.appendChild(css);
+            var js = document.createElement("script");
+            js.src = "https://cdn.fromdoppler.com/formgenerator/latest/vendor.js";
+            js.onload = function () {
+              $jqf().ready(function () {
+                renderForm("PuswgnBl8h9taRKHNerqwA%3D%3D", "56460400");
+              });
+            };
+            document.head.appendChild(js);
+          }
+          var zona = document.getElementById("quiero");
+          if ("IntersectionObserver" in window) {
+            var obs = new IntersectionObserver(function (entradas) {
+              if (entradas[0].isIntersecting) { cargarDoppler(); obs.disconnect(); }
+            }, { rootMargin: "400px" });
+            obs.observe(zona);
+          } else {
+            window.addEventListener("load", cargarDoppler);
+          }
+        })();
       </script>
       <p class="legal">Datos personales: tu nombre y email serán usados solo para enviarte este descuento e información de Yerba Mate Barranca. Quedan incluidos en una base de datos de nuestra responsabilidad. Podés acceder, rectificar o suprimir tus datos escribiendo a yerbamate@barranca.com, conforme a la Ley 25.326. La AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, órgano de control de dicha ley, atiende denuncias y reclamos. Al suscribirte aceptás los <a href="#tyc">términos y condiciones</a>.</p>
     </div>
@@ -182,7 +215,7 @@ footer.pie a{color:#fff}
 <!-- ===== CTA de "red de seguridad": para quien todavía no quiere dejar su mail ===== -->
 <div class="seguridad">
   <div class="wrap">
-    <p>¿Todavía tenés dudas? <a href="https://wa.me/5493434291548">Escribinos por WhatsApp</a> y te ayudamos a elegir.</p>
+    <p>¿Todavía tenés dudas? <a href="https://wa.me/549XXXXXXXXXX">Escribinos por WhatsApp</a> y te ayudamos a elegir.</p>
   </div>
 </div>
 
@@ -193,7 +226,7 @@ footer.pie a{color:#fff}
   <div class="wrap">
     <h2>Términos y condiciones</h2>
     <p>Promoción válida desde el 7 de noviembre de 2026 hasta agotar stock, para compras de la Yerba canchada sin acidez de 1 kg realizadas en Argentina. El descuento del 15% se aplica una sola vez por persona, mediante el código recibido por email, y no es acumulable con otras promociones. Los plazos de entrega son estimados. Esta landing es un trabajo práctico de Procesamiento de Datos III y el producto es ficticio.</p>
-    <p><strong>Fuentes de imágenes:</strong> Pexels (licencia Pexels).</p>
+    <p><strong>Fuentes de imágenes:</strong> foto de Egor Komarov, Pexels (licencia Pexels).</p>
   </div>
 </div>
 
