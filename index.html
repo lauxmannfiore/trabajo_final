@@ -13,7 +13,7 @@
 <meta property="og:title" content="Yerba Mate Barranca | Yerba canchada sin acidez">
 <meta property="og:description" content="Yerba canchada suave, directo a tu casa. Suscribite y llevate 15% off.">
 <meta property="og:type" content="website">
-<!-- La imagen se indica con la dirección de la página publicada -->
+<!-- La imagen se indica con la dirección de la página publicada (github.io), no con la de github.com -->
 <meta property="og:image" content="https://lauxmannfiore.github.io/trabajo_final/images/pexels-egorkomarov.jpg">
 <meta name="theme-color" content="#1F3D2B">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧉%3C/text%3E%3C/svg%3E">
@@ -41,7 +41,6 @@ header a.btn-mini{color:var(--verde);background:var(--hoja);padding:8px 16px;bor
 .hero figcaption{font:.8rem system-ui,sans-serif;color:#cfdcc4;margin-top:6px}
 .btn{display:inline-block;background:var(--hoja);color:var(--verde);font-weight:800;font-size:1.05rem;padding:14px 28px;border-radius:8px;border:0;text-decoration:none;cursor:pointer}
 .btn:hover{filter:brightness(1.08)}
-.btn-block{width:100%}
 section{padding:64px 0}
 h2{font-size:clamp(1.6rem,3.5vw,2.2rem);line-height:1.2;margin:0 0 28px;color:var(--verde)}
 .beneficios{display:grid;gap:28px;grid-template-columns:repeat(3,1fr)}
@@ -56,13 +55,8 @@ blockquote footer{margin-top:8px;font:.9rem system-ui,sans-serif;color:var(--gri
 .accion{background:var(--tierra);color:#fff}
 .accion h2{color:#fff}
 .accion .wrap{display:grid;gap:36px;grid-template-columns:1fr 1fr;align-items:start}
-form{background:#fff;color:var(--texto);padding:24px;border-radius:10px}
-label{display:block;font-weight:600;font-size:.95rem;margin:0 0 4px}
-input[type=text],input[type=email]{width:100%;padding:12px;border:1px solid #b7bfb0;border-radius:6px;font-size:1rem;margin-bottom:14px}
+.formcard{background:#fff;color:var(--texto);padding:24px;border-radius:10px}
 .legal{font:.82rem/1.5 system-ui,sans-serif;color:var(--gris);margin:12px 0 0}
-.check{display:flex;gap:10px;align-items:flex-start;font:.9rem/1.4 system-ui,sans-serif;margin-bottom:16px}
-.check input{margin-top:3px}
-.check label{font-weight:400;margin:0}
 .seguridad{text-align:center;padding:40px 0}
 .seguridad a{font:700 1rem system-ui,sans-serif}
 .tyc{background:#fff;border-top:1px solid var(--borde);padding:40px 0;font-size:.95rem;color:var(--gris)}
@@ -80,6 +74,9 @@ footer.pie a{color:#fff}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
+<!-- Formulario de Doppler: estilos y script que dibujan el formulario dentro de la landing -->
+<link rel="stylesheet" href="https://cdn.fromdoppler.com/formgenerator/latest/styles.css">
+<script src="https://cdn.fromdoppler.com/formgenerator/latest/vendor.js"></script>
 </head>
 
 <body>
@@ -167,26 +164,20 @@ footer.pie a{color:#fff}
 <section class="accion" id="quiero">
   <div class="wrap">
     <div>
-      <h2>Hacete parte de esta comunidad!</h2>
+      <h2>Hacete parte y obtené 15% off</h2>
       <p>Completá tus datos y recibí tu descuento y novedades en tu email.</p>
     </div>
 
-    <!-- Formulario conectado a Doppler: los datos se envían a la dirección del formulario creado en Doppler Pages.
-         Los name de los campos (FNAME, LNAME, EMAIL) tienen que coincidir con los del formulario de Doppler. -->
-    <form action="https://www.dopplerpages.com/fiorelauxmannmkt-DA7B9/Form1-91235" method="post">
-      <label for="nombre">Nombre</label>
-      <input type="text" id="nombre" name="FNAME" autocomplete="given-name" required>
-      <label for="apellido">Apellido</label>
-      <input type="text" id="apellido" name="LNAME" autocomplete="family-name" required>
-      <label for="email">Email</label>
-      <input type="email" id="email" name="EMAIL" autocomplete="email" required>
-      <div class="check">
-        <input type="checkbox" id="acepto" name="acepto" required>
-        <label for="acepto">Acepto recibir comunicaciones de Yerba Mate Barranca y los <a href="#tyc">términos y condiciones</a>.</label>
-      </div>
-      <button class="btn btn-block" type="submit">Quiero el descuento</button>
-      <p class="legal">Datos personales: tu nombre y email serán usados solo para enviarte este descuento e información de Yerba Mate Barranca. Quedan incluidos en una base de datos de nuestra responsabilidad. Podés acceder, rectificar o suprimir tus datos escribiendo a yerbamate@barranca.com, conforme a la Ley 25.326. La AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, órgano de control de dicha ley, atiende denuncias y reclamos.</p>
-    </form>
+    <!-- Formulario de Doppler incrustado: los campos y el envío los maneja Doppler (los datos entran directo a la lista) -->
+    <div class="formcard">
+      <div class="_dp_container-form" id="56460400"></div>
+      <script>
+        $jqf().ready(function() {
+          renderForm("PuswgnBl8h9taRKHNerqwA%3D%3D", "56460400");
+        });
+      </script>
+      <p class="legal">Datos personales: tu nombre y email serán usados solo para enviarte este descuento e información de Yerba Mate Barranca. Quedan incluidos en una base de datos de nuestra responsabilidad. Podés acceder, rectificar o suprimir tus datos escribiendo a yerbamate@barranca.com, conforme a la Ley 25.326. La AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, órgano de control de dicha ley, atiende denuncias y reclamos. Al suscribirte aceptás los <a href="#tyc">términos y condiciones</a>.</p>
+    </div>
   </div>
 </section>
 
@@ -204,7 +195,7 @@ footer.pie a{color:#fff}
   <div class="wrap">
     <h2>Términos y condiciones</h2>
     <p>Promoción válida desde el 7 de noviembre de 2026 hasta agotar stock, para compras de la Yerba canchada sin acidez de 1 kg realizadas en Argentina. El descuento del 15% se aplica una sola vez por persona, mediante el código recibido por email, y no es acumulable con otras promociones. Los plazos de entrega son estimados. Esta landing es un trabajo práctico de Procesamiento de Datos III y el producto es ficticio.</p>
-    <p><strong>Fuentes de imágenes:</strong> Pexels (licencia Pexels).</p>
+    <p><strong>Fuentes de imágenes:</strong> foto de Egor Komarov, Pexels (licencia Pexels).</p>
   </div>
 </div>
 
